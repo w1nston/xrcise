@@ -1,0 +1,19 @@
+.xrcise-input {
+  background-color: #fff;
+  border: 1px solid #bbb;
+  border-radius: .1875rem;
+  box-shadow: 0 2px 0 #ececec inset;
+  color: #333;
+  font-size: .875rem;
+  height: 32px;
+  padding: 0 8px;
+  width: 246px;
+}
+
+/* TODO:
+.xrcise-input--invalid {
+  border-color: #d00;
+  box-shadow: inset 0 2px 0 #ececec;
+  font-style: normal;
+}
+*/

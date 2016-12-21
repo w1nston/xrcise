@@ -1,0 +1,11 @@
+.xrcise-textarea {
+  background-color: #fff;
+  border: 1px solid #bbb;
+  border-radius: .1875rem;
+  box-shadow: 0 2px 0 #ececec inset;
+  color: #333;
+  font-size: .875rem;
+  height: 146px;
+  padding: 8px 8px;
+  width: 246px;
+}
