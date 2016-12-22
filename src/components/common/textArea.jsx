@@ -1,5 +1,5 @@
 import React from 'react';
-import './TextArea.css';
+import './textArea.css';
 
 export default function TextArea({ input }) {
   return <textarea className="xrcise-textarea" {...input} />;

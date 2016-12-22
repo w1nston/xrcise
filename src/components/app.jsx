@@ -10,7 +10,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <div>
-        <nav>
+        <nav className="xrcise-navbar">
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/exercises">Exercises</Link></li>
@@ -18,11 +18,13 @@ export default function App() {
           </ul>
         </nav>
 
-        <Match exactly pattern="/" component={HomePage} />
-        <Match pattern="/exercises" component={ExercisesPage} />
-        <Match pattern="/workout-sessions" component={WorkoutSessionsPage} />
+        <section className="xrcise-content-container">
+          <Match exactly pattern="/" component={HomePage} />
+          <Match pattern="/exercises" component={ExercisesPage} />
+          <Match pattern="/workout-sessions" component={WorkoutSessionsPage} />
 
-        <Miss component={NoMatchPage} />
+          <Miss component={NoMatchPage} />
+        </section>
       </div>
     </BrowserRouter>
   );

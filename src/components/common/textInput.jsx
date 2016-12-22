@@ -1,5 +1,5 @@
 import React from 'react';
-import './TextInput.css';
+import './textInput.css';
 
 export default function TextInput({ input }) {
   return (

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import classnames from 'classnames';
-import TextInput from '../common/TextInput';
-import TextArea from '../common/TextArea';
+import TextInput from '../common/textInput';
+import TextArea from '../common/textArea';
 import './exercisesForm.css';
 
 function submitButtonDisabled(pristine, submitting) {
@@ -62,7 +62,6 @@ function ExercisesForm({
 }
 
 export const FORM_NAME = 'exercisesForm';
-
 export default reduxForm({
   form: FORM_NAME,
 })(ExercisesForm);
