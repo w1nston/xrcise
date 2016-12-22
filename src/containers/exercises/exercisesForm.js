@@ -6,7 +6,6 @@ import { addNewExercise } from '../../actions/exercisesActions';
 function mapDispatchToProps(dispatch) {
   return {
     onSubmit(values) {
-      console.log('values!', values);
       dispatch(reset(FORM_NAME));
       dispatch(addNewExercise(values.exerciseName, values.exerciseDescription));
     }

@@ -1,0 +1,8 @@
+.xrcise-exercises-container {
+  display: flex;
+  padding: 20px;
+}
+
+.xrcise-exercises-form {
+  margin-right: 20px;
+}

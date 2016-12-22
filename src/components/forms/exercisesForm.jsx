@@ -11,9 +11,9 @@ function submitButtonDisabled(pristine, submitting) {
 
 function getSubmitButtonClassName(pristine, submitting) {
   return classnames(
-    'xrcise-exercise-form__submit-button',
+    'xrcise-exercises-form__submit-button',
     {
-      'xrcise-exercise-form__submit-button--disabled': submitButtonDisabled(pristine, submitting)
+      'xrcise-exercises-form__submit-button--disabled': submitButtonDisabled(pristine, submitting)
     }
   );
 }
@@ -24,14 +24,14 @@ function ExercisesForm({
   submitting,
 }) {
   return (
-    <form className="xrcise-exercise-form" onSubmit={handleSubmit}>
+    <form className="xrcise-exercises-form" onSubmit={handleSubmit}>
       <div className="xricse-exercise-form__row">
         <label
-          className="xrcise-exercise-form__label"
+          className="xrcise-exercises-form__label"
           htmlFor="exerciseName"
         >Name</label>
         <Field
-          className="xrcise-exercise-form__field"
+          className="xrcise-exercises-form__field"
           name="exerciseName"
           component={TextInput}
           type="text"
@@ -39,11 +39,11 @@ function ExercisesForm({
       </div>
       <div className="xricse-exercise-form__row">
         <label
-          className="xrcise-exercise-form__label"
+          className="xrcise-exercises-form__label"
           htmlFor="exerciseDescription"
         >Description</label>
         <Field
-          className="xrcise-exercise-form__field"
+          className="xrcise-exercises-form__field"
           name="exerciseDescription"
           component={TextArea}
           type="text"

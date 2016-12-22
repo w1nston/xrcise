@@ -1,4 +1,4 @@
-.xrcise-exercise-form {
+.xrcise-exercises-form {
 
 }
 
@@ -8,19 +8,19 @@
   margin-bottom: 16px;
 }
 
-.xrcise-exercise-form__label {
+.xrcise-exercises-form__label {
 
 }
 
-.xrcise-exercise-form__field {
+.xrcise-exercises-form__field {
 
 }
 
-.xrcise-exercise-form__button-row {
+.xrcise-exercises-form__button-row {
 
 }
 
-.xrcise-exercise-form__submit-button {
+.xrcise-exercises-form__submit-button {
   white-space: nowrap;
   border-radius: 5px;
   padding: 10px 15px;
@@ -30,7 +30,7 @@
   border: 1px solid #285f8f;
 }
 
-.xrcise-exercise-form__submit-button--disabled {
+.xrcise-exercises-form__submit-button--disabled {
   opacity: .6;
   cursor: not-allowed;
 }
