@@ -6,9 +6,10 @@ function trimWhiteSpaces(input = '') {
   return input.replace(/\s/g,'');
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
   const exercisesItems = getExercisesItems(state);
-
+  // TODO This seems to persist sort in state... nichts gut...
+  // TODO Immutable js to the rescue?
   return {
     options: exercisesItems
       .sort((x, y) => {
@@ -18,6 +19,7 @@ function mapStateToProps(state) {
       })
       .map(item =>
       ({ value: trimWhiteSpaces(item.name), label: item.name })),
+    ...ownProps.input,
   };
 }
 

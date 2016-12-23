@@ -13,6 +13,7 @@
   border-left: 30px solid #fff;
   padding: .625rem 2.5rem .25rem .5rem;
   text-align: left;
+  max-width: 486px;
 }
 
 tr:nth-child(even) {

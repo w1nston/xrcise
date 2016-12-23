@@ -3,14 +3,15 @@ import types from '../actions/exercisesActions';
 const initialState = [
   {
     name: 'Squats',
-    description: 'Some description',
+    description: `crouch or sit with one's knees bent and one's` +
+    `heels close to or touching one's buttocks or the back of one's thighs.`,
   },
   {
     name: 'Bench Press',
     description: 'Some longer description',
   },
   {
-    name: 'Lat pull down',
+    name: 'Lat Pull Down',
     description: 'Some lengthy description',
   },
   {
