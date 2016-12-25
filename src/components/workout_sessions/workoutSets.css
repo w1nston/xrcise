@@ -1,0 +1,13 @@
+.xrcise-workout-sets {
+  display: flex;
+  flex-direction: row;
+}
+
+
+.xrcise-workout-set:nth-child(odd) {
+  background-color: #8ddaff;
+}
+
+.xrcise-workout-set:nth-child(even) {
+  background-color: #beeaff;
+}

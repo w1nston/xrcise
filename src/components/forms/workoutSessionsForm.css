@@ -3,3 +3,14 @@
   flex-direction: column;
   margin-bottom: 16px;
 }
+
+.xrcise-workout-sessions-form__workout-set {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.xrcise-workout-sessions-form__exercise-select {
+  width: 246px;
+  margin-right: 8px;
+}

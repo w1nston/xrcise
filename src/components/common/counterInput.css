@@ -1,0 +1,16 @@
+.xrcise-counter-input__input {
+  width: 46px;
+}
+
+.xrcise-counter-input {
+  font-size: .75rem;
+}
+
+.xrcise-counter-input__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.xrcise-counter-input__button {
+  width: 46px;
+}

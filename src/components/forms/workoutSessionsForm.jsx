@@ -2,6 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import ExercisesSelect from '../../containers/workout_sessions/exercisesSelect';
 import DatePicker from '../../components/common/datePicker';
+import WorkoutSets from '../../components/workout_sessions/workoutSets'; // TODO Maybe container though...
 import './workoutSessionsForm.css';
 
 function WorkoutSessionsForm({
@@ -17,7 +18,14 @@ function WorkoutSessionsForm({
       </div>
       <div className="xricse-workout-sessions-form__row">
         <label htmlFor="exercise">Exercise</label>
-        <Field name="exercise" component={ExercisesSelect} />
+        <div className="xrcise-workout-sessions-form__workout-set">
+          <Field
+            className="xrcise-workout-sessions-form__exercise-select"
+            name="exercise"
+            component={ExercisesSelect}
+          />
+          <WorkoutSets />
+        </div>
       </div>
     </form>
   );
