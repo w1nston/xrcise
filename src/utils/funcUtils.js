@@ -7,3 +7,9 @@ export const Left = x => ({
   map: f => Left(x),
   fold: (f, g) => f(x),
 });
+
+export function triggerCallback(callback) {
+  return typeof callback === 'function'
+    ? Right(callback)
+    : Left(callback);
+}

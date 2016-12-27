@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import DayPicker, { DateUtils } from 'react-day-picker';
-import { Right, Left } from '../../utils/funcUtils';
+import { triggerCallback } from '../../utils/funcUtils';
 import './datePicker.css';
-
-const triggerOnChange = onChange => {
-  return typeof onChange === 'function'
-    ? Right(onChange)
-    : Left(onChange);
-};
 
 function formatDate(date) {
   return moment(date).format('YYYY-MM-DD');
@@ -31,9 +25,9 @@ export default class DatePicker extends Component {
     let selectedDate = null;
 
     if (!selected) {
-      triggerOnChange(this.props.input.onChange)
+      triggerCallback(this.props.input.onChange)
         .fold(
-          () => console.log('this.props.input.onChange is not defined'),
+          () => console.warn('this.props.input.onChange is not defined'),
           onChange => onChange(formatDate(date))
         );
       selectedDate = date;
