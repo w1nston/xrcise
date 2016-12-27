@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import DayPicker, { DateUtils } from 'react-day-picker';
+import { Right, Left } from '../../utils/funcUtils';
 import './datePicker.css';
-
-const Right = x => ({
-  map: f => Right(f(x)),
-  fold: (f, g) => g(x),
-});
-
-const Left = x => ({
-  map: f => Left(x),
-  fold: (f, g) => f(x),
-});
 
 const triggerOnChange = onChange => {
   return typeof onChange === 'function'
