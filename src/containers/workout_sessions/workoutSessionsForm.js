@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 import WorkoutSessionsForm from '../../components/forms/workoutSessionsForm';
+import { getWorkoutSets } from '../../reducers/workoutSessionsFormReducer';
 
 function mapStateToProps(state) {
   return {
-    // TODO
+    workoutSets: getWorkoutSets(state),
   };
 }
 
