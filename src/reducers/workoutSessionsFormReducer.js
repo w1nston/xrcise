@@ -2,9 +2,13 @@ import {
   List as immutableList,
   Map as immutableMap,
 } from 'immutable';
+import { generateGUID } from '../utils/generatorUtils';
 import types from '../actions/workoutSessionsFormActions';
 
 const initialState = immutableMap({
+  exerciseGUIDS: immutableList.of(
+    generateGUID()
+  ),
   workoutSets: immutableList.of(
     immutableList.of(
       immutableMap({
@@ -31,7 +35,7 @@ const initialState = immutableMap({
   ),
 });
 
-function workoutSessionFormReducer(state, action = {}) {
+function workoutSetReducer(state, action = {}) {
   switch (action.type) {
     case types.ADD_EXERCISE:
       return immutableList.of(
@@ -64,14 +68,22 @@ function workoutSessionFormReducer(state, action = {}) {
 export default function workoutSessionsFormReducer(state = initialState, action = {}) {
   switch (action.type) {
     case types.ADD_EXERCISE: {
-      const updater = items =>
-        items.push(workoutSessionFormReducer(null, action));
-      return state.update('workoutSets', updater);
+      const workoutSetsUpdater = items =>
+        items.push(workoutSetReducer(null, action));
+      const exerciseGUIDSUpdater = items =>
+        items.push(generateGUID());
+      return state
+        .update('workoutSets', workoutSetsUpdater)
+        .update('exerciseGUIDS', exerciseGUIDSUpdater);
     }
     case types.REMOVE_EXERCISE: {
-      const updater = items =>
+      const workoutSetsUpdater = items =>
         items.filter((x, index) => action.row !== index);
-      return state.update('workoutSets', updater);
+      const exerciseGUIDSUpdater = items =>
+        items.filter(x => x !== action.guid);
+      return state
+        .update('workoutSets', workoutSetsUpdater)
+        .update('exerciseGUIDS', exerciseGUIDSUpdater);
     }
     default:
       return state;
@@ -86,3 +98,6 @@ export const getWorkoutSets = state => getCurrentReducer(state)
     x => x.toArray()
       .map(y => y.toObject())
   );
+export const getExerciseGUIDS = state => getCurrentReducer(state)
+  .get('exerciseGUIDS')
+  .toArray();

@@ -10,9 +10,10 @@ export function addExercise() {
   };
 }
 
-export function removeExercise(row) {
+export function removeExercise(row, guid) {
   return {
     type: types.REMOVE_EXERCISE,
     row,
+    guid,
   }
 }

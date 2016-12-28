@@ -14,6 +14,7 @@ function WorkoutSessionsForm({
   workoutSets,
   handleAddExercise,
   handleRemoveExercise,
+  exerciseGUIDS,
 }) {
   return (
     <form className="xrcise-workout-sessions-form" onSubmit={handleSubmit}>
@@ -23,11 +24,11 @@ function WorkoutSessionsForm({
       </div>
       {workoutSets.map((workoutSet, i) => (
         <div key={i} className="xricse-workout-sessions-form__row">
-          <label htmlFor={`exercises${i}`}>Exercise</label>
+          <label htmlFor={`exercises${exerciseGUIDS[i]}`}>Exercise</label>
           <div className="xrcise-workout-sessions-form__workout-set">
             <Field
               className="xrcise-workout-sessions-form__exercise-select"
-              name={`exercise${i}`}
+              name={`exercise${exerciseGUIDS[i]}`}
               component={ExercisesSelect}
             />
             <div className="xrcise-workout-sets">
@@ -35,7 +36,7 @@ function WorkoutSessionsForm({
             </div>
             {workoutSets.length > 1 && (
               <button
-                onClick={handleRemoveExercise.bind(null, i)}
+                onClick={handleRemoveExercise.bind(null, i, exerciseGUIDS[i])}
               >
                 Remove
               </button>

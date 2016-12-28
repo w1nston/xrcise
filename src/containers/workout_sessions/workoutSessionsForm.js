@@ -1,10 +1,12 @@
 import { connect } from 'react-redux';
-import WorkoutSessionsForm from '../../components/forms/workoutSessionsForm';
-import { getWorkoutSets } from '../../reducers/workoutSessionsFormReducer';
+import { change } from 'redux-form';
+import WorkoutSessionsForm, { FORM_NAME } from '../../components/forms/workoutSessionsForm';
+import { getWorkoutSets, getExerciseGUIDS } from '../../reducers/workoutSessionsFormReducer';
 import { addExercise, removeExercise } from '../../actions/workoutSessionsFormActions';
 
 function mapStateToProps(state) {
   return {
+    exerciseGUIDS: getExerciseGUIDS(state),
     workoutSets: getWorkoutSets(state),
   };
 }
@@ -16,10 +18,10 @@ function mapDispatchToProps(dispatch) {
       dispatch(addExercise());
     },
 
-    handleRemoveExercise(row, event) {
+    handleRemoveExercise(row, guid, event) {
       event.preventDefault();
-      dispatch(removeExercise(row));
-      // TODO: Use redux-form correctly so that field `exercises${row}` is cleared
+      dispatch(removeExercise(row, guid));
+      dispatch(change(FORM_NAME, `exercise${guid}`, ''));
     }
   };
 }
