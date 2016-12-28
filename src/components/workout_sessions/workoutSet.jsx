@@ -14,7 +14,7 @@ export default function WorkoutSet({ weight, reps }) {
       <CounterInput
         className="xrcise-workout-set__counter-input"
         label="Reps"
-        reps={reps}
+        value={reps}
       />
     </div>
   );

@@ -5,11 +5,15 @@ import DatePicker from '../../components/common/datePicker';
 import WorkoutSet from '../../components/workout_sessions/workoutSet';
 import './workoutSessionsForm.css';
 
+const isLastElement = (x, y) => x === y;
+
 function WorkoutSessionsForm({
   handleSubmit,
   pristine,
   submitting,
-  workoutSets
+  workoutSets,
+  handleAddExercise,
+  handleRemoveExercise,
 }) {
   return (
     <form className="xrcise-workout-sessions-form" onSubmit={handleSubmit}>
@@ -19,19 +23,33 @@ function WorkoutSessionsForm({
       </div>
       {workoutSets.map((workoutSet, i) => (
         <div key={i} className="xricse-workout-sessions-form__row">
-          <label htmlFor="exercise">Exercise</label>
+          <label htmlFor={`exercises${i}`}>Exercise</label>
           <div className="xrcise-workout-sessions-form__workout-set">
             <Field
               className="xrcise-workout-sessions-form__exercise-select"
-              name="exercise"
+              name={`exercise${i}`}
               component={ExercisesSelect}
             />
             <div className="xrcise-workout-sets">
-              {workoutSet.map((set, id) => <WorkoutSet key={id} {...set}/>)}
+              {workoutSet.map((set, id) => <WorkoutSet key={id} {...set} />)}
             </div>
+            {workoutSets.length > 1 && (
+              <button
+                onClick={handleRemoveExercise.bind(null, i)}
+              >
+                Remove
+              </button>
+            )}
+            {isLastElement(workoutSets.length - 1, i) && (
+              <button
+                onClick={handleAddExercise}
+              >
+                Add
+              </button>
+            )}
           </div>
-        </div>))
-      }
+        </div>
+      ))}
     </form>
   );
 }
