@@ -49,49 +49,61 @@ function workoutSetReducer(state, action = {}) {
   }
 }
 
+function addExercise(state, action) {
+  const workoutSetsUpdater = items =>
+    items.push(workoutSetReducer(null, action));
+  const exerciseGUIDSUpdater = items =>
+    items.push(generateGUID());
+  return state
+    .update('workoutSets', workoutSetsUpdater)
+    .update('exerciseGUIDS', exerciseGUIDSUpdater);
+}
+
+function addWorkoutSet(state, row) {
+  const updater = items =>
+    items.set(
+      row,
+      items
+        .get(row)
+        .push(immutableMap({
+          weight: null,
+          reps: null,
+        }))
+    );
+  return state.update('workoutSets', updater);
+}
+
+function removeExercise(state, action) {
+  const workoutSetsUpdater = items =>
+    items.filter((x, index) => action.row !== index);
+  const exerciseGUIDSUpdater = items =>
+    items.filter(x => x !== action.guid);
+  return state
+    .update('workoutSets', workoutSetsUpdater)
+    .update('exerciseGUIDS', exerciseGUIDSUpdater);
+}
+
+function removeWorkoutSet(state, row) {
+  const updater = items =>
+    items.set(
+      row,
+      items
+        .get(row)
+        .pop()
+    );
+  return state.update('workoutSets', updater);
+}
+
 export default function workoutSessionsFormReducer(state = initialState, action = {}) {
   switch (action.type) {
-    case types.ADD_EXERCISE: {
-      const workoutSetsUpdater = items =>
-        items.push(workoutSetReducer(null, action));
-      const exerciseGUIDSUpdater = items =>
-        items.push(generateGUID());
-      return state
-        .update('workoutSets', workoutSetsUpdater)
-        .update('exerciseGUIDS', exerciseGUIDSUpdater);
-    }
-    case types.ADD_WORKOUT_SET: {
-      const updater = items =>
-        items.set(
-          action.row,
-          items
-            .get(action.row)
-            .push(immutableMap({
-              weight: null,
-              reps: null,
-            }))
-        );
-      return state.update('workoutSets', updater);
-    }
-    case types.REMOVE_EXERCISE: {
-      const workoutSetsUpdater = items =>
-        items.filter((x, index) => action.row !== index);
-      const exerciseGUIDSUpdater = items =>
-        items.filter(x => x !== action.guid);
-      return state
-        .update('workoutSets', workoutSetsUpdater)
-        .update('exerciseGUIDS', exerciseGUIDSUpdater);
-    }
-    case types.REMOVE_WORKOUT_SET: {
-      const updater = items =>
-        items.set(
-          action.row,
-          items
-            .get(action.row)
-            .pop()
-        );
-      return state.update('workoutSets', updater);
-    }
+    case types.ADD_EXERCISE:
+      return addExercise(state, action);
+    case types.ADD_WORKOUT_SET:
+      return addWorkoutSet(state, action.row);
+    case types.REMOVE_EXERCISE:
+      return removeExercise(state, action);
+    case types.REMOVE_WORKOUT_SET:
+      return removeWorkoutSet(state, action.row);
     default:
       return state;
   }
