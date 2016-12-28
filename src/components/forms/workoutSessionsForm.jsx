@@ -34,20 +34,22 @@ function WorkoutSessionsForm({
             <div className="xrcise-workout-sets">
               {workoutSet.map((set, id) => <WorkoutSet key={id} {...set} />)}
             </div>
-            {workoutSets.length > 1 && (
-              <button
-                onClick={handleRemoveExercise.bind(null, i, exerciseGUIDS[i])}
-              >
-                Remove
-              </button>
-            )}
-            {isLastElement(workoutSets.length - 1, i) && (
-              <button
-                onClick={handleAddExercise}
-              >
-                Add
-              </button>
-            )}
+            <div className="xrcise-workout-sessions-form__row-buttons">
+              {workoutSets.length > 1 && (
+                <button
+                  onClick={handleRemoveExercise.bind(null, i, exerciseGUIDS[i])}
+                >
+                  Remove
+                </button>
+              )}
+              {isLastElement(workoutSets.length - 1, i) && (
+                <button
+                  onClick={handleAddExercise}
+                >
+                  Add
+                </button>
+              )}
+            </div>
           </div>
         </div>
       ))}

@@ -18,6 +18,7 @@
 .xrcise-workout-sets {
   display: flex;
   flex-direction: row;
+  margin-right: 8px;
 }
 
 
@@ -27,4 +28,9 @@
 
 .xrcise-workout-set:nth-child(even) {
   background-color: #beeaff;
+}
+
+.xrcise-workout-sessions-form__row-buttons {
+  display: flex;
+  flex-direction: column;
 }
