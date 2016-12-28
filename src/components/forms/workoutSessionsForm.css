@@ -34,3 +34,12 @@
   display: flex;
   flex-direction: column;
 }
+
+.xrcise-workout-sets__buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.xrcise-workout-sets__button {
+  width: 3rem;
+}

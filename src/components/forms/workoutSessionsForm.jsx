@@ -13,7 +13,9 @@ function WorkoutSessionsForm({
   submitting,
   workoutSets,
   handleAddExercise,
+  handleAddWorkoutSet,
   handleRemoveExercise,
+  handleRemoveWorkoutSet,
   exerciseGUIDS,
 }) {
   return (
@@ -33,6 +35,22 @@ function WorkoutSessionsForm({
             />
             <div className="xrcise-workout-sets">
               {workoutSet.map((set, id) => <WorkoutSet key={id} {...set} />)}
+              <div className="xrcise-workout-sets__buttons">
+                {workoutSet.length > 1 && (
+                  <button
+                    onClick={handleRemoveWorkoutSet.bind(null, i, workoutSet.length - 1)}
+                    className="xrcise-workout-sets__button"
+                  >
+                    -
+                  </button>
+                )}
+                <button
+                  onClick={handleAddWorkoutSet.bind(null, i)}
+                  className="xrcise-workout-sets__button"
+                >
+                  +
+                </button>
+              </div>
             </div>
             <div className="xrcise-workout-sessions-form__row-buttons">
               {workoutSets.length > 1 && (

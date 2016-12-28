@@ -22,14 +22,6 @@ const initialState = immutableMap({
       immutableMap({
         weight: null,
         reps: null,
-      }),
-      immutableMap({
-        weight: null,
-        reps: null,
-      }),
-      immutableMap({
-        weight: null,
-        reps: null,
       })
     )
   ),
@@ -39,14 +31,6 @@ function workoutSetReducer(state, action = {}) {
   switch (action.type) {
     case types.ADD_EXERCISE:
       return immutableList.of(
-        immutableMap({
-          weight: null,
-          reps: null,
-        }),
-        immutableMap({
-          weight: null,
-          reps: null,
-        }),
         immutableMap({
           weight: null,
           reps: null,
@@ -76,6 +60,19 @@ export default function workoutSessionsFormReducer(state = initialState, action 
         .update('workoutSets', workoutSetsUpdater)
         .update('exerciseGUIDS', exerciseGUIDSUpdater);
     }
+    case types.ADD_WORKOUT_SET: {
+      const updater = items =>
+        items.set(
+          action.row,
+          items
+            .get(action.row)
+            .push(immutableMap({
+              weight: null,
+              reps: null,
+            }))
+        );
+      return state.update('workoutSets', updater);
+    }
     case types.REMOVE_EXERCISE: {
       const workoutSetsUpdater = items =>
         items.filter((x, index) => action.row !== index);
@@ -84,6 +81,16 @@ export default function workoutSessionsFormReducer(state = initialState, action 
       return state
         .update('workoutSets', workoutSetsUpdater)
         .update('exerciseGUIDS', exerciseGUIDSUpdater);
+    }
+    case types.REMOVE_WORKOUT_SET: {
+      const updater = items =>
+        items.set(
+          action.row,
+          items
+            .get(action.row)
+            .pop()
+        );
+      return state.update('workoutSets', updater);
     }
     default:
       return state;
