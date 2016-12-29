@@ -5,15 +5,11 @@ import ExerciseNameInput from '../exercises/exerciseNameInput';
 import TextArea from '../common/textArea';
 import './exercisesForm.css';
 
-function submitButtonDisabled(pristine, submitting) {
-  return pristine || submitting;
-}
-
-function getSubmitButtonClassName(pristine, submitting) {
+function getSubmitButtonClassName(disabled) {
   return classnames(
     'xrcise-exercises-form__submit-button',
     {
-      'xrcise-exercises-form__submit-button--disabled': submitButtonDisabled(pristine, submitting)
+      'xrcise-exercises-form__submit-button--disabled': disabled
     }
   );
 }
@@ -51,9 +47,9 @@ function ExercisesForm({
       </div>
       <div className="xricse-exercise-form__button-row">
         <button
-          className={getSubmitButtonClassName(pristine, submitting)}
+          className={getSubmitButtonClassName(pristine || submitting)}
           type="submit"
-          disabled={submitButtonDisabled(pristine, submitting)}
+          disabled={pristine || submitting}
         >Add new exercise
         </button>
       </div>

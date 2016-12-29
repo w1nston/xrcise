@@ -1,11 +1,21 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import classnames from 'classnames';
 import ExercisesSelect from '../../containers/workout_sessions/exercisesSelect';
 import DatePicker from '../../components/common/datePicker';
 import WorkoutSet from '../../components/workout_sessions/workoutSet';
 import './workoutSessionsForm.css';
 
 const isLastElement = (x, y) => x === y;
+
+function getSubmitButtonClassName(disabled) {
+  return classnames(
+    'xrcise-workout-sessions-form__submit-button',
+    {
+      'xrcise-workout-sessions-form__submit-button--disabled': disabled
+    }
+  );
+}
 
 function WorkoutSessionsForm({
   handleSubmit,
@@ -35,7 +45,8 @@ function WorkoutSessionsForm({
               component={ExercisesSelect}
             />
             <div className="xrcise-workout-sets">
-              {workoutSet.map(guid => <WorkoutSet updateFieldFn={updateFieldFn} key={guid} guid={guid} />)}
+              {workoutSet.map(guid => <WorkoutSet updateFieldFn={updateFieldFn} key={guid}
+                                                  guid={guid} />)}
               <div className="xrcise-workout-sets__buttons">
                 {workoutSet.length > 1 && (
                   <button
@@ -72,6 +83,15 @@ function WorkoutSessionsForm({
           </div>
         </div>
       ))}
+      <div className="xricse-workout-sessions-form__row">
+        <button
+          className={getSubmitButtonClassName(pristine || submitting)}
+          type="submit"
+          disabled={pristine || submitting}
+        >
+          Save workout
+        </button>
+      </div>
     </form>
   );
 }

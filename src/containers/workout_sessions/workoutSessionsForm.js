@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { change } from 'redux-form';
+import { change, reset } from 'redux-form';
 import WorkoutSessionsForm, { FORM_NAME } from '../../components/forms/workoutSessionsForm';
 import { getWorkoutSets, getExerciseGUIDS } from '../../reducers/workoutSessionsFormReducer';
 import {
@@ -41,6 +41,11 @@ function mapDispatchToProps(dispatch) {
 
     updateFieldFn(fieldName, value) {
       dispatch(change(FORM_NAME, fieldName, value));
+    },
+
+    onSubmit(values) {
+      dispatch(reset(FORM_NAME));
+      // TODO: Make something of the resulting values...
     }
   };
 }
