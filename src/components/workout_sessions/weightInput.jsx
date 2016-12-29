@@ -13,7 +13,7 @@ export default function WeightInput({
   const { name, value } = input;
   const updateWeight = x => updateFieldFn(name, x);
 
-  const increaseWeight = v => changeCounter(v)
+  const increaseWeight = () => changeCounter(value)
     .map(parseValue)
     .map(x => x + 2.5)
     .fold(
@@ -21,7 +21,7 @@ export default function WeightInput({
       updateWeight
     );
 
-  const decreaseWeight = v => changeCounter(v)
+  const decreaseWeight = () => changeCounter(value)
     .map(parseValue)
     .map(x => x >= 2.5 ? x - 2.5 : 0)
     .fold(
@@ -34,8 +34,8 @@ export default function WeightInput({
       name={name}
       value={value}
       label={label}
-      increaseFn={increaseWeight.bind(null, value)}
-      decreaseFn={decreaseWeight.bind(null, value)}
+      increaseFn={increaseWeight}
+      decreaseFn={decreaseWeight}
       onChange={event => updateFieldFn(name, event.target.value)}
     />
   );

@@ -13,7 +13,7 @@ export default function RepsInput({
   const { name, value } = input;
   const updateWeight = x => updateFieldFn(name, x);
 
-  const increaseWeight = v => changeCounter(v)
+  const increaseWeight = () => changeCounter(value)
     .map(parseValue)
     .map(x => x + 1)
     .fold(
@@ -21,7 +21,7 @@ export default function RepsInput({
       updateWeight
     );
 
-  const decreaseWeight = v => changeCounter(v)
+  const decreaseWeight = () => changeCounter(value)
     .map(parseValue)
     .map(x => x >= 1 ? x - 1 : 0)
     .fold(
@@ -34,8 +34,8 @@ export default function RepsInput({
       name={name}
       value={value}
       label={label}
-      increaseFn={increaseWeight.bind(null, value)}
-      decreaseFn={decreaseWeight.bind(null, value)}
+      increaseFn={increaseWeight}
+      decreaseFn={decreaseWeight}
       onChange={event => updateFieldFn(name, event.target.value)}
     />
   );
