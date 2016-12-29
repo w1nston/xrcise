@@ -38,6 +38,10 @@ function mapDispatchToProps(dispatch) {
       event.preventDefault();
       dispatch(removeWorkoutSet(row, column));
     },
+
+    updateFieldFn(fieldName, value) {
+      dispatch(change(FORM_NAME, fieldName, value));
+    }
   };
 }
 

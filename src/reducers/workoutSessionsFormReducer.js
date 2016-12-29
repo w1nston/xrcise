@@ -11,18 +11,9 @@ const initialState = immutableMap({
   ),
   workoutSets: immutableList.of(
     immutableList.of(
-      immutableMap({
-        weight: null,
-        reps: null,
-      }),
-      immutableMap({
-        weight: null,
-        reps: null,
-      }),
-      immutableMap({
-        weight: null,
-        reps: null,
-      })
+      generateGUID(),
+      generateGUID(),
+      generateGUID()
     )
   ),
 });
@@ -31,18 +22,9 @@ function workoutSetReducer(state, action = {}) {
   switch (action.type) {
     case types.ADD_EXERCISE:
       return immutableList.of(
-        immutableMap({
-          weight: null,
-          reps: null,
-        }),
-        immutableMap({
-          weight: null,
-          reps: null,
-        }),
-        immutableMap({
-          weight: null,
-          reps: null,
-        })
+        generateGUID(),
+        generateGUID(),
+        generateGUID()
       );
     default:
       return state;
@@ -66,6 +48,7 @@ function addWorkoutSet(state, row) {
       items
         .get(row)
         .push(immutableMap({
+          guid: generateGUID(),
           weight: null,
           reps: null,
         }))
@@ -113,10 +96,7 @@ const getCurrentReducer = state => state.workoutSessionsFormReducer;
 export const getWorkoutSets = state => getCurrentReducer(state)
   .get('workoutSets')
   .toArray()
-  .map(
-    x => x.toArray()
-      .map(y => y.toObject())
-  );
+  .map(x => x.toArray());
 export const getExerciseGUIDS = state => getCurrentReducer(state)
   .get('exerciseGUIDS')
   .toArray();

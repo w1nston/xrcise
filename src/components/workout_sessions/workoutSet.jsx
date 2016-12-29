@@ -1,21 +1,29 @@
 import React from 'react';
-import CounterInput from '../common/counterInput';
+import { Field } from 'redux-form';
+import WeightInput from '../../components/workout_sessions/weightInput';
+import RepsInput from '../../components/workout_sessions/repsInput';
 import './workoutSet.css';
 
-export default function WorkoutSet({ weight, reps }) {
+export default function WorkoutSet({ guid, updateFieldFn }) {
+  function increaseWeight(value) {
+    updateFieldFn(`weight-${guid}`, Number(value) + 2.5);
+  }
+  function decreaseWeight(value) {
+    const parsedVal = Number(value);
+    const retVal = parsedVal >= 2.5 ? parsedVal - 2.5 : 0;
+    updateFieldFn(`weight-${guid}`, retVal);
+  }
   return (
     <div className="xrcise-workout-set">
-      <CounterInput
-        className="xrcise-workout-set__counter-input"
+      <Field
+        name={`weight-${guid}`}
+        component={WeightInput}
         label="Weight"
-        value={weight}
+        increaseFn={increaseWeight}
+        decreaseFn={decreaseWeight}
       />
       <span className="xrcise-workout-set__divider">/</span>
-      <CounterInput
-        className="xrcise-workout-set__counter-input"
-        label="Reps"
-        value={reps}
-      />
+      <Field name={`reps-${guid}`} component={RepsInput} label="Reps" />
     </div>
   );
 }

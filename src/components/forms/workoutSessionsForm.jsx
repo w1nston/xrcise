@@ -17,6 +17,7 @@ function WorkoutSessionsForm({
   handleRemoveExercise,
   handleRemoveWorkoutSet,
   exerciseGUIDS,
+  updateFieldFn,
 }) {
   return (
     <form className="xrcise-workout-sessions-form" onSubmit={handleSubmit}>
@@ -34,7 +35,7 @@ function WorkoutSessionsForm({
               component={ExercisesSelect}
             />
             <div className="xrcise-workout-sets">
-              {workoutSet.map((set, id) => <WorkoutSet key={id} {...set} />)}
+              {workoutSet.map(guid => <WorkoutSet updateFieldFn={updateFieldFn} key={guid} guid={guid} />)}
               <div className="xrcise-workout-sets__buttons">
                 {workoutSet.length > 1 && (
                   <button

@@ -16,7 +16,7 @@ export default function CounterInput({
   label,
   increaseFn,
   decreaseFn,
-  value,
+  input,
 }) {
   function handleClick(callback, event) {
     event.preventDefault();
@@ -39,7 +39,7 @@ export default function CounterInput({
         </button>
         <TextInput
           className="xrcise-counter-input__input"
-          value={value}
+          input={input}
         />
         <button
           onClick={handleClick.bind(null, decreaseFn)}
