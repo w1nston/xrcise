@@ -2,7 +2,14 @@ import React from 'react';
 import classnames from 'classnames';
 import './textInput.css';
 
-export default function TextInput({ input, onFocus, className }) {
+export default function TextInput({
+  name,
+  value,
+  onFocus,
+  className,
+  onChange,
+  onBlur,
+}) {
   return (
     <input
       className={classnames(
@@ -11,7 +18,10 @@ export default function TextInput({ input, onFocus, className }) {
       )}
       type="text"
       onFocus={onFocus}
-      {...input}
+      name={name}
+      value={value}
+      onChange={onChange}
+      onBlur={onBlur}
     />
   );
 }

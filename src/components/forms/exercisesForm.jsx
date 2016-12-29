@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import classnames from 'classnames';
-import TextInput from '../common/textInput';
+import ExerciseNameInput from '../exercises/exerciseNameInput';
 import TextArea from '../common/textArea';
 import './exercisesForm.css';
 
@@ -33,7 +33,7 @@ function ExercisesForm({
         <Field
           className="xrcise-exercises-form__field"
           name="exerciseName"
-          component={TextInput}
+          component={ExerciseNameInput}
           type="text"
         />
       </div>

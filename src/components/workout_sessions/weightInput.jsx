@@ -1,18 +1,35 @@
 import React from 'react';
 import CounterInput from '../common/counterInput';
+import { Box } from '../../utils/funcUtils';
+
+const parseValue = x => Number(x);
 
 export default function WeightInput({
   input,
   label,
-  increaseFn,
-  decreaseFn,
+  updateFieldFn,
 }) {
+  const { name, value } = input;
+  const updateWeight = x => updateFieldFn(name, x);
+
+  const increaseWeight = v => Box(v)
+    .map(parseValue)
+    .map(x => x + 2.5)
+    .fold(updateWeight);
+
+  const decreaseWeight = v => Box(v)
+    .map(parseValue)
+    .map(x => x >= 2.5 ? x - 2.5 : 0)
+    .fold(updateWeight);
+
   return (
     <CounterInput
-      input={input}
+      name={name}
+      value={value}
       label={label}
-      increaseFn={increaseFn.bind(null, input.value)}
-      decreaseFn={decreaseFn.bind(null, input.value)}
+      increaseFn={increaseWeight.bind(null, value)}
+      decreaseFn={decreaseWeight.bind(null, value)}
+      onChange={event => updateFieldFn(name, event.target.value)}
     />
   );
 }
