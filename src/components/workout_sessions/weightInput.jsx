@@ -1,8 +1,9 @@
 import React from 'react';
 import CounterInput from '../common/counterInput';
-import { Box } from '../../utils/funcUtils';
+import { Left, Right } from '../../utils/funcUtils';
 
 const parseValue = x => Number(x);
+const changeCounter = x => isNaN(x) ? Left(x) : Right(x);
 
 export default function WeightInput({
   input,
@@ -12,15 +13,21 @@ export default function WeightInput({
   const { name, value } = input;
   const updateWeight = x => updateFieldFn(name, x);
 
-  const increaseWeight = v => Box(v)
+  const increaseWeight = v => changeCounter(v)
     .map(parseValue)
     .map(x => x + 2.5)
-    .fold(updateWeight);
+    .fold(
+      () => { /* Ignore NaN values */ },
+      updateWeight
+    );
 
-  const decreaseWeight = v => Box(v)
+  const decreaseWeight = v => changeCounter(v)
     .map(parseValue)
     .map(x => x >= 2.5 ? x - 2.5 : 0)
-    .fold(updateWeight);
+    .fold(
+      () => { /* Ignore NaN values */ },
+      updateWeight
+    );
 
   return (
     <CounterInput
