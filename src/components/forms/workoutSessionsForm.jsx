@@ -45,8 +45,15 @@ function WorkoutSessionsForm({
               component={ExercisesSelect}
             />
             <div className="xrcise-workout-sets">
-              {workoutSet.map(guid => <WorkoutSet updateFieldFn={updateFieldFn} key={guid}
-                                                  guid={guid} />)}
+              {workoutSet.map((guid, i) => (
+                  <WorkoutSet
+                    key={guid}
+                    guid={guid}
+                    sequenceNumber={i}
+                    updateFieldFn={updateFieldFn}
+                  />
+                )
+              )}
               <div className="xrcise-workout-sets__buttons">
                 {workoutSet.length > 1 && (
                   <button
