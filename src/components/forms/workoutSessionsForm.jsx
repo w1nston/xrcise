@@ -41,7 +41,7 @@ function WorkoutSessionsForm({
           <div className="xrcise-workout-sessions-form__workout-set">
             <Field
               className="xrcise-workout-sessions-form__exercise-select"
-              name={`exercise${exerciseGUIDS[i]}`}
+              name={`exercise_${exerciseGUIDS[i]}`}
               component={ExercisesSelect}
             />
             <div className="xrcise-workout-sets">
