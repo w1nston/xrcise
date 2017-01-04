@@ -5,27 +5,21 @@ import {
 import { generateGUID } from '../utils/generatorUtils';
 import types from '../actions/workoutSessionsFormActions';
 
+const any = null;
+
 const initialState = immutableMap({
   exerciseGUIDS: immutableList.of(
     generateGUID()
   ),
   workoutSets: immutableList.of(
-    immutableList.of(
-      generateGUID(),
-      generateGUID(),
-      generateGUID()
-    )
+    immutableList.of(any, any, any)
   ),
 });
 
 function workoutSetReducer(state, action = {}) {
   switch (action.type) {
     case types.ADD_EXERCISE:
-      return immutableList.of(
-        generateGUID(),
-        generateGUID(),
-        generateGUID()
-      );
+      return immutableList.of(any, any, any);
     default:
       return state;
   }
@@ -47,11 +41,7 @@ function addWorkoutSet(state, row) {
       row,
       items
         .get(row)
-        .push(immutableMap({
-          guid: generateGUID(),
-          weight: null,
-          reps: null,
-        }))
+        .push(any)
     );
   return state.update('workoutSets', updater);
 }
