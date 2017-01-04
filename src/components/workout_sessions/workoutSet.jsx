@@ -8,14 +8,14 @@ export default function WorkoutSet({ guid, sequenceNumber, updateFieldFn }) {
   return (
     <div className="xrcise-workout-set">
       <Field
-        name={`weight_${sequenceNumber}_${guid}`}
+        name={`weight_${guid}_${sequenceNumber}`}
         component={WeightInput}
         label="Weight"
         updateFieldFn={updateFieldFn}
       />
       <span className="xrcise-workout-set__divider">/</span>
       <Field
-        name={`reps_${sequenceNumber}_${guid}`}
+        name={`reps_${guid}_${sequenceNumber}`}
         component={RepsInput}
         label="Reps"
         updateFieldFn={updateFieldFn}
