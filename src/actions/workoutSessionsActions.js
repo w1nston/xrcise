@@ -1,5 +1,6 @@
 const types = {
   ADD_EXERCISE: 'ADD_EXERCISE',
+  ADD_NEW_WORKOUT_SESSION: 'ADD_NEW_WORKOUT_SESSION',
   ADD_WORKOUT_SET: 'ADD_WORKOUT_SET',
   REMOVE_EXERCISE: 'REMOVE_EXERCISE',
   REMOVE_WORKOUT_SET: 'REMOVE_WORKOUT_SET',
@@ -32,5 +33,13 @@ export function removeWorkoutSet(row, column) {
     type: types.REMOVE_WORKOUT_SET,
     row,
     column,
+  };
+}
+
+export function addNewWorkoutSession(workoutDate, workoutSets) {
+  return {
+    type: types.ADD_NEW_WORKOUT_SESSION,
+    workoutDate,
+    workoutSets,
   };
 }
