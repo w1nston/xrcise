@@ -17,6 +17,21 @@ export default class DatePicker extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
+    this.handleDocumentClick = this.handleDocumentClick.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener('click', this.handleDocumentClick, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.handleDocumentClick, false);
+  }
+
+  handleDocumentClick(event) {
+    if (!this.inputElement.contains(event.target)) {
+      this.closeDayPicker();
+    }
   }
 
   handleChange(event, date, { selected, disabled }) {
@@ -37,6 +52,10 @@ export default class DatePicker extends Component {
       selectedDate,
       inputIsFocused: false,
     });
+  }
+
+  closeDayPicker() {
+    this.setState({ inputIsFocused: false });
   }
 
   handleFocus() {
@@ -61,6 +80,7 @@ export default class DatePicker extends Component {
     return (
       <div>
         <input
+          ref={node => { this.inputElement = node; }}
           name={this.props.name}
           className="xrcise-datePicker__input"
           {...this.props.input}
