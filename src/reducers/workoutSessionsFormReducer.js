@@ -2,8 +2,8 @@ import {
   List as immutableList,
   Map as immutableMap,
 } from 'immutable';
-import { generateGUID } from '../utils/generatorUtils';
-import types from '../actions/workoutSessionsFormActions';
+import { generateGUID } from '../utils/utilityFunctions';
+import types from '../actions/workoutSessionsActions';
 
 const any = null;
 

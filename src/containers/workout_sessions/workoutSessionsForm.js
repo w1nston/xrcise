@@ -4,10 +4,12 @@ import WorkoutSessionsForm, { FORM_NAME } from '../../components/forms/workoutSe
 import { getWorkoutSets, getExerciseGUIDS } from '../../reducers/workoutSessionsFormReducer';
 import {
   addExercise,
+  addNewWorkoutSession,
   removeExercise,
   addWorkoutSet,
   removeWorkoutSet,
-} from '../../actions/workoutSessionsFormActions';
+} from '../../actions/workoutSessionsActions';
+import { transformToWorkoutSession } from '../../utils/utilityFunctions';
 
 function mapStateToProps(state) {
   return {
@@ -45,7 +47,7 @@ function mapDispatchToProps(dispatch) {
 
     onSubmit(values) {
       dispatch(reset(FORM_NAME));
-      // TODO: Make something of the resulting values...
+      dispatch(addNewWorkoutSession(transformToWorkoutSession(values)));
     }
   };
 }
