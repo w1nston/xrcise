@@ -36,10 +36,9 @@ export function removeWorkoutSet(row, column) {
   };
 }
 
-export function addNewWorkoutSession(workoutDate, workoutSets) {
+export function addNewWorkoutSession(workoutSession) {
   return {
     type: types.ADD_NEW_WORKOUT_SESSION,
-    workoutDate,
-    workoutSets,
+    workoutSession,
   };
 }

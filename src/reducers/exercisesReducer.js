@@ -52,6 +52,4 @@ export default function exercisesReducer(state = initialState, action = {}) {
 
 const getCurrentReducer = state => state.exercisesReducer;
 export const getExercisesItems = state => getCurrentReducer(state)
-  .get('exercisesList')
-  .toArray()
-  .map(x => x.toObject());
+  .get('exercisesList').toJS();

@@ -11,7 +11,8 @@
 }
 
 .xrcise-workout-sessions-form__exercise-select {
-  width: 246px;
+  max-width: 246px;
+  min-width: 246px;
   margin-right: 8px;
 }
 

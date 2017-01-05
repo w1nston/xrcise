@@ -26,9 +26,9 @@ export function transformToWorkoutSession(values) {
     .filter(splitKey => splitKey.length > 1)
     .map(splitKey => ({
       [splitKey[1]]:  {
-        workoutDate:values.workoutDate,
+        workoutDate: values.workoutDate,
         exerciseName: values[`exercise_${splitKey[1]}`].value,
-        workoutSet: Object.keys(values)
+        workoutSets: Object.keys(values)
           .map(key => key.split('_'))
           .filter(s => s.length > 2)
           .filter(s => s[1] === splitKey[1])
